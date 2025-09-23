@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/basic_widgets/text_widget.dart';
+import 'package:hello_world/basic_widgets/image_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -104,8 +106,10 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('You have pushed the button this many times:'),
+            // const Text('You have pushed the button this many times:'),
             // const Text('Anya Callissta Chriswantari, your number is:'), // praktikum 3 langkah 12
+            // const MyTextWidget(), // praktikum 4 langkah 1
+            const MyImageWidget(), // praktikum 4 langkah 2
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
