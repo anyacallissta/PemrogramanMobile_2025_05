@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/basic_widgets/text_widget.dart';
 import 'package:hello_world/basic_widgets/image_widget.dart';
+import 'package:hello_world/basic_widgets/loading_cupertino.dart';
+import 'package:hello_world/basic_widgets/fab_widget.dart';
 
 void main() {
   runApp(const MyApp());
+  // runApp(const MyLoadCupertino()); // praktikum 5 langkah 1
 }
 
 class MyApp extends StatelessWidget {
@@ -120,7 +123,8 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        // child: const Icon(Icons.add),
+          child: const Icon(Icons.thumb_up), // praktikum 5 langkah 2
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
