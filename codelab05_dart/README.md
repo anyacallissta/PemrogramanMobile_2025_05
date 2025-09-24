@@ -97,3 +97,81 @@ Date and Time Pickers termasuk pada kategori input dan selection widget, berikut
 ![Output Langkah 6](img/P5_L6.jpg)
 
 _Gambar 13. Ouput P5 Langkah 6_
+
+## Tugas - Membuat Project namer_app
+### Langkah 4 - Menambahkan Tombol
+>Meluncurkan Aplikasi
+
+![Output Gambar 14](img/14.png)
+
+_Gambar 14. Meluncurkan Aplikasi_
+
+>Hot Reload Pertama
+
+![Output Gambar 15](img/15.png)
+
+_Gambar 15. Hot Reload Pertama_
+
+>Menambahkan Tombol
+
+![Output Gambar 16](img/16.gif)
+
+_Gambar 16. Menambahkan Tombol_
+
+### Langkah 5 - Memperindah UI
+>Menambahkan Kartu
+
+![Output Gambar 17](img/17.png)
+
+_Gambar 17. Menambahkan Kartu_
+
+>Tema dan Gaya
+
+![Output Gambar 18](img/18.gif)
+
+_Gambar 18. Tema dan Gaya_
+
+>Tema Teks
+
+![Output Gambar 19](img/19.png)
+
+_Gambar 19. Tema Teks_
+
+>Menempatkan UI di Tengah
+
+![Output Gambar 20](img/20.png)
+
+_Gambar 20. Menempatkan UI di Tengah_
+
+### Langkah 6 - Menambahkan Fungsi
+>Menambahkan Tombol Like
+
+![Output Gambar 21](img/21.png)
+
+_Gambar 21. Menambahkan Tombol Like_
+
+### Langkah 7 - Menambahkan Sidebar
+>setState
+
+![Output Gambar 22](img/22.gif)
+
+_Gambar 22. setState_
+
+>Menggunakan Selected Index
+
+![Output Gambar 23](img/23.png)
+
+_Gambar 23. Menggunakan Selected Index_
+
+>Tingkat Respon
+
+![Output Gambar 24](img/24.gif)
+
+_Gambar 24. Tingkat Respon_
+
+### Langkah 8 - Menambahkan Halaman Baru
+>Menambahkan Halaman Like
+
+![Output Gambar 25](img/25.gif)
+
+_Gambar 25. Menambahkan Halaman Like_
