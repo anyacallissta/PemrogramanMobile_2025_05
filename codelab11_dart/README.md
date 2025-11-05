@@ -10,7 +10,7 @@ Nama : Anya Callissta Chriswantari
 ## Praktikum 1 - Mengunduh Data dari Web Service (API)
 
 ### Soal 1
-Tambahkan nama panggilan Anda pada title app sebagai identitas hasil pekerjaan Anda.
+Tambahkan nama panggilan Anda pada title app sebagai identitas hasil pekerjaan Anda.<br>
 ![Output Praktikum 1 Soal 1](img/P1_S1.png)
 
 _Gambar 1. Ouput Praktikum 1 Soal 1_
@@ -61,7 +61,7 @@ Jelaskan maksud perbedaan kode langkah 2 dengan langkah 5-6 tersebut!
 ## Praktikum 4 - Memanggil Future Secara Paralel
 
 ### Soal 7
-![Output Praktikum 4 Soal 7](img/P4_S7.png)
+![Output Praktikum 4 Soal 7](img/P4_S7.gif)
 
 _Gambar 7. Ouput Praktikum 4 Soal 7_
 
@@ -102,7 +102,7 @@ Apakah Anda mendapatkan koordinat GPS ketika run di browser? Mengapa demikian?
 ## Praktikum 7 - Manajemen Future dengan FutureBuilder
 
 ### Soal 13
-![Output Praktikum 7 Soal 13](img/P6_S12.jpg)
+![Output Praktikum 7 Soal 13](img/P6_S12.gif)
 
 _Gambar 12. Ouput Praktikum 7 Soal 13_
 
@@ -110,7 +110,7 @@ Apakah ada perbedaan UI dengan praktikum sebelumnya? Mengapa demikian?
 >Jawab: Tidak ada, karena perubahan kode yang dilakukan bukan mengubah tampilan. Perbedaan terletak pada mekanisme pengelolaan state asinkron dan waktu update UI.
 
 ### Soal 14
-![Output Praktikum 7 Soal 14](img/P6_S12.jpg)
+![Output Praktikum 7 Soal 14](img/P6_S12.gif)
 
 _Gambar 13. Ouput Praktikum 7 Soal 14_
 
