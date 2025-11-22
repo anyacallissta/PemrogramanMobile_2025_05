@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import './model/pizza.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:path_provider/path_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,6 +34,8 @@ class _MyHomePageState extends State<MyHomePage> {
   String pizzaString = '';
   List<Pizza> myPizzas = [];
   int appCounter = 0;
+  String documentsPath = '';
+  String tempPath = '';
   
   @override
   Widget build(BuildContext context) {
@@ -50,23 +53,37 @@ class _MyHomePageState extends State<MyHomePage> {
       //   },
       // )
 
-      appBar: AppBar(title: Text('Shared Preferences by Anya'), backgroundColor: Colors.pink[100]),
-      body: Center(
+      // appBar: AppBar(title: Text('Shared Preferences by Anya'), backgroundColor: Colors.pink[100]),
+      // body: Center(
+      //   child: Column(
+      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //     children: [
+      //       Text(
+      //         'You have opened this app $appCounter times.',
+      //       ),
+      //       ElevatedButton(
+      //         onPressed: () {
+      //           deletePreference();
+      //         },
+      //         child: const Text('Reset Counter'),
+      //       ),
+      //     ],
+      //   ),
+      // ),
+
+      appBar: AppBar(title: const Text('Path Provider by Anya'), backgroundColor: Colors.pink[100]),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text(
-              'You have opened this app $appCounter times.',
-            ),
-            ElevatedButton(
-              onPressed: () {
-                deletePreference();
-              },
-              child: const Text('Reset Counter'),
-            ),
+            Text('Documents Path: $documentsPath'),
+            Text('Temporary Path: $tempPath'),
           ],
         ),
       ),
+
     );
   }
 
@@ -100,7 +117,8 @@ class _MyHomePageState extends State<MyHomePage> {
     //     myPizzas = value;
     //   });
     // });
-    readAndWritePreferences();
+    // readAndWritePreferences();
+    getPaths();
   }
 
   String convertToJSON(List<Pizza> pizzas) {
@@ -124,6 +142,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
     setState(() {
       appCounter = 0;
+    });
+  }
+
+  Future getPaths() async {
+    final documentsDirectory = await getApplicationDocumentsDirectory();
+    final tempDirectory = await getTemporaryDirectory();
+
+    setState(() {
+      documentsPath = documentsDirectory.path;
+      tempPath = tempDirectory.path;
     });
   }
 }
