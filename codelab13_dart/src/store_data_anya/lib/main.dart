@@ -3,6 +3,7 @@ import 'dart:convert';
 import './model/pizza.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path_provider/path_provider.dart';
+import 'dart:io';
 
 void main() {
   runApp(const MyApp());
@@ -36,6 +37,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int appCounter = 0;
   String documentsPath = '';
   String tempPath = '';
+  late File myFile;
+  String fileText = '';
   
   @override
   Widget build(BuildContext context) {
@@ -80,11 +83,32 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             Text('Documents Path: $documentsPath'),
             Text('Temporary Path: $tempPath'),
+
+            ElevatedButton(
+              child: const Text('Read File'),
+              onPressed: () => readFile(),
+            ),
+            Text(fileText),
           ],
         ),
       ),
-
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // readJsonFile().then((value) {
+    //   setState(() {
+    //     myPizzas = value;
+    //   });
+    // });
+    // readAndWritePreferences();
+    // getPaths();
+    getPaths().then((_) {
+      myFile = File('$documentsPath/myfile.txt');
+      writeFile();
+    });
   }
 
   Future<List<Pizza>> readJsonFile() async {
@@ -107,18 +131,6 @@ class _MyHomePageState extends State<MyHomePage> {
     print(json);
 
     return myPizzas;
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    // readJsonFile().then((value) {
-    //   setState(() {
-    //     myPizzas = value;
-    //   });
-    // });
-    // readAndWritePreferences();
-    getPaths();
   }
 
   String convertToJSON(List<Pizza> pizzas) {
@@ -153,5 +165,26 @@ class _MyHomePageState extends State<MyHomePage> {
       documentsPath = documentsDirectory.path;
       tempPath = tempDirectory.path;
     });
+  }
+
+  Future<bool> writeFile() async {
+    try {
+      await myFile.writeAsString('Margherita, Capricciosa, Napoli');
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<bool> readFile() async {
+    try {
+      String contents = await myFile.readAsString();
+      setState(() {
+        fileText = contents;
+      });
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 }
