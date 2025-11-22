@@ -4,6 +4,7 @@ import './model/pizza.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,6 +40,10 @@ class _MyHomePageState extends State<MyHomePage> {
   String tempPath = '';
   late File myFile;
   String fileText = '';
+  final pwdController = TextEditingController();
+  String myPass = '';
+  final storage = const FlutterSecureStorage();
+  final myKey = 'myPass';
   
   @override
   Widget build(BuildContext context) {
@@ -74,24 +79,56 @@ class _MyHomePageState extends State<MyHomePage> {
       //   ),
       // ),
 
-      appBar: AppBar(title: const Text('Path Provider by Anya'), backgroundColor: Colors.pink[100]),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text('Documents Path: $documentsPath'),
-            Text('Temporary Path: $tempPath'),
+      // appBar: AppBar(title: const Text('Path Provider by Anya'), backgroundColor: Colors.pink[100]),
+      // body: Padding(
+      //   padding: const EdgeInsets.all(16.0),
+      //   child: Column(
+      //     crossAxisAlignment: CrossAxisAlignment.start,
+      //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //     children: [
+      //       Text('Documents Path: $documentsPath'),
+      //       Text('Temporary Path: $tempPath'),
 
-            ElevatedButton(
-              child: const Text('Read File'),
-              onPressed: () => readFile(),
+      //       ElevatedButton(
+      //         child: const Text('Read File'),
+      //         onPressed: () => readFile(),
+      //       ),
+      //       Text(fileText),
+      //     ],
+      //   ),
+      // ),
+
+      appBar: AppBar(title: const Text('Secure Storage by Anya'), backgroundColor: Colors.pink[100]),
+      body: Column(
+        children: [
+          TextField(
+            controller: pwdController,
+            decoration: const InputDecoration(
+              labelText: 'Enter a secret value',
             ),
-            Text(fileText),
-          ],
-        ),
-      ),
+          ),
+          const SizedBox(height: 20),
+
+          ElevatedButton(
+            child: const Text('Save Value'), 
+            onPressed: () {
+              writeToSecureStorage();
+          }),
+          const SizedBox(height: 20),
+
+          ElevatedButton(
+            child: Text('Read Value'),
+            onPressed: () {
+              readFromSecureStorage().then((value) {
+                setState(() {
+                  myPass = value;
+                });
+              });
+            }
+          ),
+          Text('Stored Value: $myPass'),
+        ],
+      )
     );
   }
 
@@ -105,9 +142,16 @@ class _MyHomePageState extends State<MyHomePage> {
     // });
     // readAndWritePreferences();
     // getPaths();
-    getPaths().then((_) {
-      myFile = File('$documentsPath/myfile.txt');
-      writeFile();
+
+    // getPaths().then((_) {
+    //   myFile = File('$documentsPath/myfile.txt');
+    //   writeFile();
+    // });
+
+    readFromSecureStorage().then((value) {
+      setState(() {
+        myPass = value;
+      });
     });
   }
 
@@ -186,5 +230,14 @@ class _MyHomePageState extends State<MyHomePage> {
     } catch (e) {
       return false;
     }
+  }
+
+  Future writeToSecureStorage() async {
+    await storage.write(key: myKey, value: pwdController.text);
+  }
+
+  Future<String> readFromSecureStorage() async {
+    String secret = await storage.read(key: myKey) ?? '';
+    return secret;
   }
 }
