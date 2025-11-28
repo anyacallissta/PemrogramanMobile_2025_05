@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './model/pizza.dart';
 import 'httphelper.dart';
+import 'pizza_detail.dart';
 
 void main() {
   runApp(const MyApp());
@@ -54,6 +55,17 @@ class _MyHomePageState extends State<MyHomePage> {
           );
         }
       ),
+      floatingActionButton: FloatingActionButton(
+      backgroundColor: Colors.pink[400],
+      foregroundColor: Colors.white,
+      child: const Icon(Icons.add),
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => const PizzaDetailScreen()),
+        );
+      }),
     );  
   }
 

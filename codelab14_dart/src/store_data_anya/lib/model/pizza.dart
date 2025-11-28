@@ -11,6 +11,15 @@ class Pizza {
   final double price;
   final String imageUrl;
 
+  // Unnamed constructor to create Pizza instances in code (e.g. when posting)
+  Pizza({
+    required this.id,
+    required this.pizzaName,
+    required this.description,
+    required this.price,
+    required this.imageUrl,
+  });
+
   Pizza.fromJson(Map<String, dynamic> json) : 
     // id = json['id'],
     // pizzaName = json['pizzaName'],
