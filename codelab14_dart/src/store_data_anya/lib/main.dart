@@ -49,7 +49,17 @@ class _MyHomePageState extends State<MyHomePage> {
             itemBuilder: (BuildContext context, int position) {
               return ListTile(
                 title: Text(snapshot.data![position].pizzaName),
-                subtitle: Text(snapshot.data![position].description + ' - € ' + snapshot.data![position].price.toString()),
+                subtitle: Text('${snapshot.data![position].description} - € ${snapshot.data![position].price}'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PizzaDetailScreen(
+                        pizza: snapshot.data![position], isNew: false
+                      )
+                    ),
+                  );
+                },
               );
             }
           );
@@ -63,7 +73,17 @@ class _MyHomePageState extends State<MyHomePage> {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => const PizzaDetailScreen()),
+            builder: (context) => PizzaDetailScreen(
+              pizza: Pizza(
+                id: 0,
+                pizzaName: '',
+                description: '',
+                price: 0,
+                imageUrl: '',
+              ),
+              isNew: true,
+            )
+          ),
         );
       }),
     );  
